@@ -6,12 +6,12 @@ import (
 	"time"
 )
 
-type dragon struct{
+type Dragon struct{
 	Name string
 	HitPoint int
 	Damage int
 }
-type hero struct{
+type Hero struct{
 	Name string
 	HitPoint int
 	Damage int
@@ -19,21 +19,21 @@ type hero struct{
 
 func main(){
 
-	dragon1 := dragon{
-		Name: dragonNameAdder() ,
+	dragon1 := Dragon{
+		Name:     DragonNameAdder() ,
 		HitPoint: 20,
-		Damage: 2,
+		Damage:   2,
 	}
-	hero1 := hero{
+	hero1 := Hero{
 		Name: humanNameAdder(),
 		HitPoint: 10,
 		Damage: 4,
 	}
-	storyTelling(&dragon1, &hero1)
+	StoryTelling(&dragon1, &hero1)
 
 }
 
-func dragonNameAdder() string{
+func DragonNameAdder() string{
 	rand.Seed(time.Now().UnixNano())
 	var name string
 
@@ -51,7 +51,7 @@ func humanNameAdder() string{
 
 	return name
 }
-func storyTelling(dragon *dragon, hero *hero){
+func StoryTelling(dragon *Dragon, hero *Hero){
 	fmt.Printf(`	A long, long time ago there was a village settled just near a river full of delicious fishes. 
 People on this town were happy and friendly. These villagers were living in peace until a monstrous drgon by the 
 name of %s appeared from the mountains on the north of the village. It was destroying villagers' homes and crops
@@ -62,11 +62,11 @@ was living in. The Dragon %s, saw %s and they started fighting. %s`,dragon.Name,
 	time.Sleep(time.Second * 15)
 	//time.Sleep(time.Second * 2)
 
-	gamePlay(dragon, hero)
+	GamePlay(dragon, hero)
 
 
 }
-func gamePlay(dragon *dragon, hero *hero){
+func GamePlay(dragon *Dragon, hero *Hero){
 	rand.Seed(time.Now().UnixNano())
 
 	var(
@@ -91,9 +91,9 @@ func gamePlay(dragon *dragon, hero *hero){
 
 		switch {
 		case playerDice > dragonDice:
-			dragonTakingDamage(dragon, hero)
+			DragonTakingDamage(dragon, hero)
 		case playerDice < dragonDice:
-			heroTakingDamage(dragon, hero)
+			HeroTakingDamage(dragon, hero)
 		case playerDice == dragonDice:
 			fmt.Printf("You and the Dragon both threw the same number\n\n")
 		}
@@ -108,14 +108,14 @@ func gamePlay(dragon *dragon, hero *hero){
 
 }
 
-func heroTakingDamage(dragon *dragon, hero *hero){
+func HeroTakingDamage(dragon *Dragon, hero *Hero){
 	fmt.Printf("Dragon hit you %v damage\n", dragon.Damage)
 	hero.HitPoint = hero.HitPoint - dragon.Damage
 	fmt.Printf("Your reamaining health is %v\n\n", hero.HitPoint)
 }
 
-func dragonTakingDamage(dragon *dragon, hero *hero){
+func DragonTakingDamage(dragon *Dragon, hero *Hero){
 	fmt.Printf("You hit %v damage\n", hero.Damage)
 	dragon.HitPoint = dragon.HitPoint - hero.Damage
-	fmt.Printf("Reamaining dragon health is %v\n\n", dragon.HitPoint)
+	fmt.Printf("Reamaining Dragon health is %v\n\n", dragon.HitPoint)
 }
