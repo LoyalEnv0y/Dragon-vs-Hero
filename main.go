@@ -59,7 +59,7 @@ leaving them without shelter or food. The old leader of the village sent a wonde
 seek a Hero whom would rescue them from this treacherous beast! Dandelion finally found a mercenary named %s who 
 would be able to fight with the Dragon %s. %s, traveled to the village and climbed the mountain which the Dragon 
 was living in. The Dragon %s, saw %s and they started fighting. %s`,dragon.Name, hero.Name, dragon.Name, hero.Name, dragon.Name, hero.Name, "\n\n")
-	time.Sleep(time.Second * 15)
+	time.Sleep(time.Second * 10)
 	//time.Sleep(time.Second * 2)
 
 	GamePlay(dragon, hero)
